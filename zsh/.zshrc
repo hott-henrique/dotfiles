@@ -22,24 +22,25 @@ eval "$(pyenv init -)"
 # Aliases
 alias ls="ls -l -h --color --group-directories-first"
 alias la="ls -a"
-
-neofetch
+alias tma="tmux attach"
+alias tmd="tmux detach"
 
 SESSION_NAME="TMUX"
 
 setup_tmux () {
-	if [ -z "$TMUX" ]; then
-		tmux has-session -t $SESSION_NAME 2>/dev/null
+	tmux has-session -t $SESSION_NAME 2>/dev/null
 
-		if [ $? != 0 ]; then
-			# Use -d to allow the rest of the function to run
-			tmux new-session -d -s $SESSION_NAME
+	if [ $? != 0 ]; then
+		# Use -d to allow the rest of the function to run
+		tmux new-session -d -s $SESSION_NAME
 
-			tmux new-window -d
-		fi
-
-		tmux attach-session -d -t $SESSION_NAME
+		tmux new-window -d
 	fi
 }
 
-setup_tmux
+if [ -z "$TMUX" ]; then
+	setup_tmux
+fi
+
+neofetch
+
