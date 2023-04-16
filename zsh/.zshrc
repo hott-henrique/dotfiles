@@ -24,3 +24,22 @@ alias ls="ls -l -h --color --group-directories-first"
 alias la="ls -a"
 
 neofetch
+
+SESSION_NAME="TMUX"
+
+setup_tmux () {
+	if [ -z "$TMUX" ]; then
+		tmux has-session -t $SESSION_NAME 2>/dev/null
+
+		if [ $? != 0 ]; then
+			# Use -d to allow the rest of the function to run
+			tmux new-session -d -s $SESSION_NAME
+
+			tmux new-window -d
+		fi
+
+		tmux attach-session -d -t $SESSION_NAME
+	fi
+}
+
+setup_tmux
