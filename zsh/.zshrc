@@ -23,3 +23,4 @@ eval "$(pyenv init -)"
 alias ls="ls -l -h --color --group-directories-first"
 alias la="ls -a"
 
+neofetch
