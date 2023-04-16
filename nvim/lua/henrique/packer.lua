@@ -46,12 +46,16 @@ return require('packer').startup(function(use)
             {'L3MON4D3/LuaSnip'},     -- Required
         }
     }
-    use('vim-airline/vim-airline')
-    use('vim-airline/vim-airline-themes')
-	use{
-		'windwp/nvim-autopairs',
-		config = function()
-			require("nvim-autopairs").setup {}
-		end
+	use {
+		'nvim-lualine/lualine.nvim',
+		requires = { 'nvim-tree/nvim-web-devicons', opt = true }
 	}
+    --use('vim-airline/vim-airline')
+    --use('vim-airline/vim-airline-themes')
+    use{
+        'windwp/nvim-autopairs',
+        config = function()
+            require("nvim-autopairs").setup {}
+        end
+    }
 end)
