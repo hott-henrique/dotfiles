@@ -1,0 +1,4 @@
+set $background ~/Pictures/nature_bg.jpg
+
+set $focus_after_move true
+
