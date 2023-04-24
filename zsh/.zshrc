@@ -20,8 +20,11 @@ command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
 # Aliases
+alias cat="bat"
+
 alias ls="ls -l -h --color --group-directories-first"
 alias la="ls -a"
+
 alias tma="tmux attach"
 alias tmd="tmux detach"
 
