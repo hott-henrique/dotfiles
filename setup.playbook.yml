@@ -1,0 +1,44 @@
+# Setup whole system
+
+---
+- name: Show start message
+  hosts: localhost
+  remote_user: root
+
+  tasks:
+  - name: Install python version manager
+    ansible.builtin.shell:
+      cmd: echo "Installing python version manager."
+
+  - name: Install python versions
+    ansible.builtin.shell:
+      cmd: echo "Installing python version manager."
+
+  - name: Install node version manager
+    ansible.builtin.shell:
+      cmd: echo "Installing node version manager."
+
+  - name: Install node latest stable
+    ansible.builtin.shell:
+      cmd: echo "Installing node latest stable version."
+
+  - name: Install neovim
+    ansible.builtin.shell:
+      cmd: echo "Installing neovim"
+
+  - name: Install bat
+    ansible.builtin.shell:
+      cmd: echo "Installing bat."
+
+  - name: Install tmux
+    ansible.builtin.shell:
+      cmd: echo "Installing tmux."
+
+  - name: Install latex
+    ansible.builtin.shell:
+      cmd: echo "Installing latex."
+
+  - name: Moving configuration files
+    ansible.builtin.shell:
+      cmd: echo "Installing latex."
+
