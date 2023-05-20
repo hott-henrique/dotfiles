@@ -1,24 +1,33 @@
 #! /usr/bin/env bash
 
 TEMP_DIR="${TEMP:-/tmp/}"
-
 DOTFILES_DIR="$TEMP_DIR/dotfiles/"
 
-# Ensure git to clone the playbook and dotfiles.
+# A wrapper to easily use the script with others package managers.
+
+function install_package() {
+    pacman -S --verbose $1
+}
+
+# Ensure git is installed to clone the playbook and dotfiles.
 
 if ! command -v git &> /dev/null
 then
-    pacman -S --verbose git
+    install_package git
 fi
 
 # Ensure ansible is installed to use playbook.
 
 if ! command -v ansible &> /dev/null
 then
-    pacman -S --verbose ansible
+    install_package ansible
 fi
+
+# Execute installation process.
 
 git clone https://github.com/hott-henrique/.dotfiles.git $DOTFILES_DIR
 
-ansible-playbook $DOTFILES_DIR/setup.playbook.yml
+ansible-playbook --ask-vault-password $DOTFILES_DIR/setup.playbook.yml
+
+rm -rf $DOTFILES_DIR
 

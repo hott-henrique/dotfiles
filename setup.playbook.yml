@@ -23,22 +23,26 @@
       cmd: echo "Installing node latest stable version."
 
   - name: Install neovim
-    ansible.builtin.shell:
-      cmd: echo "Installing neovim"
+    ansible.builtin.package:
+      name: neovim
+      state: installed
 
   - name: Install bat
-    ansible.builtin.shell:
-      cmd: echo "Installing bat."
+    ansible.builtin.package:
+      name: bat
+      state: installed
 
   - name: Install tmux
-    ansible.builtin.shell:
-      cmd: echo "Installing tmux."
+    ansible.builtin.package:
+      name: tmux
+      state: installed
 
   - name: Install latex
-    ansible.builtin.shell:
-      cmd: echo "Installing latex."
+    ansible.builtin.package:
+      name: texlive-most
+      state: installed
 
   - name: Moving configuration files
     ansible.builtin.shell:
-      cmd: echo "Installing latex."
+      cmd: echo "Moving config files."
 
