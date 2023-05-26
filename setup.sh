@@ -1,7 +1,6 @@
 #! /usr/bin/env bash
 
-TEMP_DIR="${TEMP:-/tmp/}"
-DOTFILES_DIR="$TEMP_DIR/dotfiles/"
+DOTFILES_DIR="~/.dotfiles/"
 
 # A wrapper to easily use the script with others package managers.
 

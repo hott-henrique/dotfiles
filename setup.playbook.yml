@@ -48,8 +48,13 @@
       name: texlive-most
       state: installed
 
+  - name: Ensure config directory exists
+    file:
+      path: ~/.config
+      state: directory
+
   - name: Moving configuration files
     ignore_errors: true
     ansible.builtin.shell:
-      cmd: echo "Moving config files."
+      cmd: mv ~/dotfiles/*/ ~/.config
 
