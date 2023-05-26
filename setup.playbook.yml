@@ -1,7 +1,5 @@
-# Setup whole system
-
 ---
-- name: Show start message
+- name: Setup OS
   hosts: localhost
   remote_user: root
 
@@ -11,6 +9,7 @@
       cmd: git clone https://github.com/pyenv/pyenv.git ~/.pyenv
 
   - name: Install python versions
+    ignore_errors: true
     ansible.builtin.shell:
       cmd: pyenv isntall 3:latest
 
@@ -19,6 +18,7 @@
       cmd: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 
   - name: Install node latest stable
+    ignore_errors: true
     ansible.builtin.shell:
       cmd: nvm install --lts
 
