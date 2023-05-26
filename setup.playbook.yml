@@ -8,19 +8,19 @@
   tasks:
   - name: Install python version manager
     ansible.builtin.shell:
-      cmd: echo "Installing python version manager."
+      cmd: git clone https://github.com/pyenv/pyenv.git ~/.pyenv
 
   - name: Install python versions
     ansible.builtin.shell:
-      cmd: echo "Installing python version manager."
+      cmd: pyenv isntall 3:latest
 
   - name: Install node version manager
     ansible.builtin.shell:
-      cmd: echo "Installing node version manager."
+      cmd: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 
   - name: Install node latest stable
     ansible.builtin.shell:
-      cmd: echo "Installing node latest stable version."
+      cmd: nvm install --lts
 
   - name: Install neovim
     ansible.builtin.package:
