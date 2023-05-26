@@ -5,6 +5,7 @@
 
   tasks:
   - name: Install python version manager
+    ignore_errors: true
     ansible.builtin.shell:
       cmd: git clone https://github.com/pyenv/pyenv.git ~/.pyenv
 
@@ -14,6 +15,7 @@
       cmd: pyenv isntall 3:latest
 
   - name: Install node version manager
+    ignore_errors: true
     ansible.builtin.shell:
       cmd: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 
@@ -23,26 +25,31 @@
       cmd: nvm install --lts
 
   - name: Install neovim
+    ignore_errors: true
     ansible.builtin.package:
       name: neovim
       state: installed
 
   - name: Install bat
+    ignore_errors: true
     ansible.builtin.package:
       name: bat
       state: installed
 
   - name: Install tmux
+    ignore_errors: true
     ansible.builtin.package:
       name: tmux
       state: installed
 
   - name: Install latex
+    ignore_errors: true
     ansible.builtin.package:
       name: texlive-most
       state: installed
 
   - name: Moving configuration files
+    ignore_errors: true
     ansible.builtin.shell:
       cmd: echo "Moving config files."
 
