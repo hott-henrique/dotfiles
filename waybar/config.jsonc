@@ -1,143 +1,84 @@
-// =============================================================================
-//
-// Waybar configuration
-//
-// Configuration reference: https://github.com/Alexays/Waybar/wiki/Configuration
-//
-// =============================================================================
-
 {
-    // -------------------------------------------------------------------------
-    // Global configuration
-    // -------------------------------------------------------------------------
+    "layer": "top", // Waybar at top layer
+    "position": "top", // Waybar position (top|bottom|left|right)
 
-    "layer": "top",
+    "height": 30, // Waybar height (to be removed for auto height)
 
-    // If height property would be not present, it'd be calculated dynamically
-    "height": 30,
-    "position": "top",
+    "spacing": 4, // Gaps between modules (4px)
 
-    "modules-left": [ "sway/workspaces"],
-    "modules-center": ["custom/wf-recorder", "sway/mode", "custom/weather"],
-    "modules-right": [
-        // informational
-        //"sway/language",
-        //"custom/github",
-        //"custom/clipboard",
-        //"custom/zeit",
-        //"cpu",
-        //"memory",
-        "battery",
-        //"temperature",
+    "modules-left": [
+        "wlr/workspaces",
+    ],
 
-        //connecting,
-		"bluetooth",
-        "network",
-
-        // media
-        "custom/playerctl",
-        //"idle_inhibitor",
-        //"custom/dnd",
-        "pulseaudio",
-        //"backlight",
-
-        // system
-        //"custom/adaptive-light",
-        //"custom/sunset",
-        "custom/pacman",
-
-        //"tray",
+    "modules-center": [
         "clock"
     ],
 
-    // -------------------------------------------------------------------------
-    // Modules
-    // -------------------------------------------------------------------------
+    "modules-right": [
+        "backlight",
+        "pulseaudio",
+        "network",
+        "battery",
+        "tray"
+    ],
+
+    "wlr/workspaces": {
+         "disable-scroll": true,
+         "all-outputs": true,
+         "format": "{name}",
+     },
+
+    "tray": {
+        "icon-size": 21,
+        "spacing": 10
+    },
+
+    "backlight": {
+        // "device": "acpi_video1",
+        "format": "{icon} ",
+        "format-icons": ["", "", "", "", "", "", "", "", ""]
+    },
+
+    "clock": {
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%Y-%m-%d}"
+    },
 
     "battery": {
-        "interval": 30,
         "states": {
             "warning": 30,
             "critical": 15
         },
-        "format-charging": " {capacity}%",
-        "format": "{icon} {capacity}%",
-        "format-icons": ["", "", "", "", "", ""],
-        "tooltip": true
-    },
-
-    "clock": {
-        "interval": 60,
-        "format": "{:%e %b %Y %H:%M}",
-        "tooltip": true,
-        "tooltip-format": "<big>{:%B %Y}</big>\n<tt>{calendar}</tt>",
-        "on-click": "swaymsg exec \\$calendar"
+        "format": "{icon}",
+        "format-charging": "",
+        "format-plugged": "",
+        "format-alt": "{time} {icon}",
+        "format-icons": ["", "", "", "", ""]
     },
 
     "network": {
-        "interval": 5,
-        "format-wifi": " ",
-        "format-ethernet": "",
-        "format-disconnected": "睊",
-        "tooltip-format": "{ifname} ({essid}): {ipaddr}",
-        "on-click": "swaymsg exec \\$term_float nmtui"
-    },
-
-
-    "bluetooth": {
-        "format": "",
-        "format-disabled": "",
-        "on-click": "swaymsg exec \\$bluetooth",
-        "on-click-right": "rfkill toggle bluetooth",
-        "tooltip-format": "{}"
+        "format-wifi": "",
+        "format-ethernet": "",
+        "format-disconnected": "⚠",
+        "tooltip-format": "{essid}",
     },
 
     "pulseaudio": {
-        "scroll-step": 5,
-        "format": "{icon} {volume}%{format_source}",
-        "format-muted": "婢 {format_source}",
-        "format-source": "",
-        "format-source-muted": " ",
+        // "scroll-step": 1, // %, can be a float
+        "format": "{icon}",
+        "format-bluetooth": "{icon}",
+        "format-bluetooth-muted": " {icon}",
+        "format-muted": " ",
         "format-icons": {
-            "headphone": "",
-            "headset": "",
-            "default": ["奄", "奔", "墳"]
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""],
         },
-        "tooltip-format": "{icon} {volume}% {format_source}",
-        "on-click": "swaymsg exec \\$pulseaudio",
-        "on-click-middle": "swaymsg exec \\$volume_mute",
-        "on-scroll-up": "swaymsg exec \\$volume_up",
-        "on-scroll-down": "swaymsg exec \\$volume_down"
-    },
-
-    "custom/weather": {
-        "icon-size": 42,
-        "format": "{icon} {}",
-        "tooltip": true,
-        "interval": 3600,
-        // accepts -c/--city <city> -t/--temperature <C/F> -d/--distance <km/miles>
-        "exec": "/usr/share/sway/scripts/weather.py",
-        "return-type": "json",
-        "format-icons": {
-            "Unknown": "",
-            "Cloudy": "摒",
-            "Fog": "",
-            "HeavyRain": "",
-            "HeavyShowers": "",
-            "HeavySnow": "",
-            "HeavySnowShowers": "ﰕ",
-            "LightRain": "",
-            "LightShowers": "",
-            "LightSleet": "",
-            "LightSleetShowers": "",
-            "LightSnow": "",
-            "LightSnowShowers": "ﭽ",
-            "PartlyCloudy": "",
-            "Sunny": "",
-            "ThunderyHeavyRain": "ﭼ",
-            "ThunderyShowers": "",
-            "ThunderySnowShowers": "",
-            "VeryCloudy": ""
-        }
+        "tooltip": false
     },
 }
+

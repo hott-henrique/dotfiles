@@ -1,204 +1,135 @@
-
-/* =============================================================================
- *
- * Waybar configuration
- *
- * Configuration reference: https://github.com/Alexays/Waybar/wiki/Configuration
- *
- * =========================================================================== */
-
-/* import css definitions for current theme */
-
-/* -----------------------------------------------------------------------------
- * Keyframes
- * -------------------------------------------------------------------------- */
-
-@keyframes blink-warning {
-    70% {
-        color: @wm_icon_bg;
-    }
-
-    to {
-        color: @wm_icon_bg;
-        background-color: @warning_color;
-    }
-}
-
-@keyframes blink-critical {
-    70% {
-      color: @wm_icon_bg;
-    }
-
-    to {
-        color: @wm_icon_bg;
-        background-color: @error_color;
-    }
-}
-
-
-/* -----------------------------------------------------------------------------
- * Base styles
- * -------------------------------------------------------------------------- */
-
-/* Reset all styles */
 * {
-    border: none;
-    border-radius: 0;
-    min-height: 0;
-    margin: 0;
-    padding: 0;
-    font-family: "RobotoMono Nerd Font", "Roboto Mono", sans-serif;
+    font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    font-size: 15px;
 }
 
-/* The whole bar */
 window#waybar {
-    background: @theme_bg_color;
-    color: @wm_icon_bg;
-    font-size: 14px;
+    background-color: transparent;
+    color: #ffffff;
+
+    transition-property: background-color;
+    transition-duration: .5s;
 }
 
-/* Each module */
-#custom-pacman,
-#custom-menu,
-#custom-help,
-#custom-scratchpad,
-#custom-github,
-#custom-clipboard,
-#custom-zeit,
-#custom-dnd,
-#bluetooth,
-#battery,
-#clock,
-#cpu,
-#memory,
-#mode,
-#network,
-#pulseaudio,
-#temperature,
-#idle_inhibitor,
-#backlight,
-#language,
-#custom-adaptive-light,
-#custom-sunset,
-#custom-playerctl,
-#tray {
-    padding-left: 10px;
-    padding-right: 10px;
+#workspaces {
+    border: solid 1px rgba(255, 255, 255, 255);
+
+    border-radius: 0% 15px 15px 0%;
+
+    padding-right: 5px;
 }
 
-
-/* -----------------------------------------------------------------------------
- * Module styles
- * -------------------------------------------------------------------------- */
-#custom-scratchpad, #custom-menu, #workspaces button.focused, #clock  {
-    color: @theme_bg_color;
-    background-color: @theme_selected_bg_color;
-}
-
-#custom-zeit.tracking {
-    background-color: @warning_color;
-}
-
-#battery {
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-}
-
-#battery.warning {
-    color: @warning_color;
-}
-
-#battery.critical {
-    color: @error_color;
-}
-
-#battery.warning.discharging {
-    animation-name: blink-warning;
-    animation-duration: 3s;
-}
-
-#battery.critical.discharging {
-    animation-name: blink-critical;
-    animation-duration: 2s;
-}
-
-#clock {
-    font-weight: bold;
-}
-
-#cpu.warning {
-    color: @warning_color;
-}
-
-#cpu.critical {
-    color: @error_color;
-}
-
-#custom-menu {
-    padding-left: 8px;
-    padding-right: 13px;
-}
-
-#memory {
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-}
-
-#memory.warning {
-    color: @warning_color;
-}
-
-#memory.critical {
-    color: @error_color;
-    animation-name: blink-critical;
-    animation-duration: 2s;
-}
-
-#mode {
-    background: @background_color;
-}
-
-#network.disconnected {
-    color: @warning_color;
-}
-
-#pulseaudio.muted {
-    color: @warning_color;
-}
-
-#temperature.critical {
-    color: @error_color;
+button {
+    border: none;
+    border-radius: 50%;
+    margin: 2px 0px 2px 2px;
 }
 
 #workspaces button {
-    border-top: 2px solid transparent;
-    /* To compensate for the top border and still have vertical centering */
-    padding-bottom: 2px;
-    padding-left: 10px;
-    padding-right: 10px;
-    color: @theme_selected_bg_color;
+    background-color: transparent;
+    color: rgba(255, 255, 255, 255);
+    font-weight: bold;
+}
+
+#workspaces button:hover {
+    background: rgba(255, 255, 255, 255);
 }
 
 #workspaces button.focused {
-    border-color: @theme_selected_bg_color;
+    background-color: #64727D;
+    box-shadow: inset 0 -3px #ffffff;
 }
 
 #workspaces button.urgent {
-    border-color: @error_color;
-    color: @error_color;
+    background-color: #eb4d4b;
 }
 
-#custom-pacman {
-    color: @warning_color;
+#clock,
+#battery,
+#network,
+#pulseaudio {
+    padding: 0 10px;
+    color: #ffffff;
 }
 
-#bluetooth.disabled {
-    color: @warning_color;
+#window,
+#workspaces {
+    margin: 0 4px;
 }
 
-#custom-wf-recorder {
-    color: @error_color;
-    padding-right: 10px;
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 0;
 }
+
+/* If workspaces is the rightmost module, omit right margin */
+.modules-right > widget:last-child > #workspaces {
+    margin-right: 0;
+}
+
+#clock {
+    background-color: transparent;
+}
+
+#battery {
+    background-color: transparent;
+    color: rgba(255, 255, 255, 255);
+}
+
+#battery.charging, #battery.plugged {
+    background-color: transparent;
+    color: #FE6900;
+}
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: #000000;
+    }
+}
+
+#battery.critical:not(.charging) {
+    background-color: rgba(255, 255, 255, 0.75);
+    color: #ffffff;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+label:focus {
+    background-color: #000000;
+}
+
+#network {
+    background-color: transparent;
+}
+
+#network.disconnected {
+    background-color: transparent;
+}
+
+#pulseaudio {
+    background-color: transparent;
+    color: rgba(255, 255, 255, 255);
+}
+
+#pulseaudio.muted {
+    background-color: transparent;
+    color: #2a5c45;
+}
+
+#tray {
+    background-color: #2980b9;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: #eb4d4b;
+}
+

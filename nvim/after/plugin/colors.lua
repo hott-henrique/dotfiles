@@ -1,19 +1,33 @@
-function ColorMyPencils(color)
-	color = color or "edge"
+function color_all(color)
+    color = color or "edge"
 
-	vim.g.edge_colors_override = {
-		-- Editor background color.
-		bg0= { "#0E0D14", "234" },
+    vim.cmd.colorscheme(color)
 
-		-- Option background color.
-		bg2= { "#191724", "235" }
-	}
-
-	vim.cmd.colorscheme(color)
-
-	-- Uncommment these lines if you want tranparent background.
-	-- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-	-- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+    vim.api.nvim_set_hl(0, 'Normal', { bg = "none" })
+    vim.api.nvim_set_hl(0, 'NormalNC', { bg = "none" })
+    vim.api.nvim_set_hl(0, 'Comment', { bg = "none" })
+    vim.api.nvim_set_hl(0, 'Constant', { bg = "none" })
+    vim.api.nvim_set_hl(0, 'Special', { bg = "none" })
+    vim.api.nvim_set_hl(0, 'Identifier', { bg = "none" })
+    vim.api.nvim_set_hl(0, 'Statement', { bg = "none" })
+    vim.api.nvim_set_hl(0, 'PreProc', { bg = "none" })
+    vim.api.nvim_set_hl(0, 'Type', { bg = "none" })
+    vim.api.nvim_set_hl(0, 'Underlined', { bg = "none" })
+    vim.api.nvim_set_hl(0, 'Todo', { bg = "none" })
+    vim.api.nvim_set_hl(0, 'String', { bg = "none" })
+    vim.api.nvim_set_hl(0, 'Function', { bg = "none" })
+    vim.api.nvim_set_hl(0, 'Conditional', { bg = "none" })
+    vim.api.nvim_set_hl(0, 'Repeat', { bg = "none" })
+    vim.api.nvim_set_hl(0, 'Operator', { bg = "none" })
+    vim.api.nvim_set_hl(0, 'Structure', { bg = "none" })
+    vim.api.nvim_set_hl(0, 'LineNr', { bg = "none" })
+    vim.api.nvim_set_hl(0, 'NonText', { bg = "none" })
+    vim.api.nvim_set_hl(0, 'SignColumn', { bg = "none" })
+    vim.api.nvim_set_hl(0, 'CursorLineNr', { bg = "none" })
+    vim.api.nvim_set_hl(0, 'EndOfBuffer', { bg = "none" })
+    vim.api.nvim_set_hl(0, 'NormalFloat', { bg = "none" })
+    vim.api.nvim_set_hl(0, 'FloatBorder', { bg = "none" })
+    vim.api.nvim_set_hl(0, 'FloatTitle', { bg = "none" })
 end
 
-ColorMyPencils()
+color_all()

@@ -1,0 +1,50 @@
+window:
+  opacity: 0.75
+
+font:
+  normal:
+    family: SpaceMonoNerdFont
+    style: Regular
+
+  bold:
+    family: SpaceMonoNerdFont
+    style: Bold
+
+  italic:
+    family: SpaceMonoNerdFont
+    style: Italic
+
+  bold_italic:
+    family: SpaceMonoNerdFont
+    style: Bold Italic
+
+draw_bold_text_with_bright_colors: true
+
+colors:
+  primary:
+    background: '#000000'
+
+selection:
+  save_to_clipboard: true
+
+cursor:
+  style:
+    shape: Block
+    blinking: Off
+
+  unfocused_hollow: true
+
+live_config_reload: true
+
+ipc_socket: true
+
+mouse:
+  hide_when_typing: true
+
+key_bindings:
+   - { key: H, mods: Control, chars: "\x1b[D" }
+   - { key: J, mods: Control, chars: "\x1b[B" }
+   - { key: K, mods: Control, chars: "\x1b[A" }
+   - { key: L, mods: Control, chars: "\x1b[C" }
+   - { key: S, mods: Control, chars: "tmux-sessionizer \x0d" }
+
